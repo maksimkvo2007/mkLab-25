@@ -59,6 +59,23 @@ int main() {
     end = high_resolution_clock::now();
     sort_l = duration_cast<nanoseconds>(end - start).count();
 
+    //Race 3
+    start = high_resolution_clock::now();
+    v.insert(v.begin() + (v.size() / 2), "TESTCODE");
+    end = high_resolution_clock::now();
+    insert_v = duration_cast<nanoseconds>(end - start).count();
+
+    auto lit = l.begin();
+    advance(lit, l.size() / 2);
+    start = high_resolution_clock::now();
+    l.insert(lit, "TESTCODE");
+    end = high_resolution_clock::now();
+    insert_l = duration_cast<nanoseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    s.insert("TESTCODE");
+    end = high_resolution_clock::now();
+    insert_s = duration_cast<nanoseconds>(end - start).count();
 
     return 0;
 }
