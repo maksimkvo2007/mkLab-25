@@ -20,7 +20,7 @@ int main() {
     long long delete_v = 0, delete_l = 0, delete_s = 0;
 
     string line;
-
+    //Race 1
     ifstream file1("codes.txt");
     auto start = high_resolution_clock::now();
     while (getline(file1, line)) {
@@ -35,6 +35,29 @@ int main() {
     while (getline(file2, line)) {
         l.push_back(line);
     }
+    end = high_resolution_clock::now();
+    read_l = duration_cast<nanoseconds>(end - start).count();
+    file2.close();
+
+    ifstream file3("codes.txt");
+    start = high_resolution_clock::now();
+    while (getline(file3, line)) {
+        s.insert(line);
+    }
+    end = high_resolution_clock::now();
+    read_s = duration_cast<nanoseconds>(end - start).count();
+    file3.close();
+
+    //Race 2
+    start = high_resolution_clock::now();
+    sort(v.begin(), v.end());
+    end = high_resolution_clock::now();
+    sort_v = duration_cast<nanoseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    l.sort();
+    end = high_resolution_clock::now();
+    sort_l = duration_cast<nanoseconds>(end - start).count();
 
 
     return 0;
