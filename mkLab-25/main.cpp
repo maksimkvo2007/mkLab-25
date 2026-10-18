@@ -21,6 +21,20 @@ int main() {
 
     string line;
 
+    ifstream file1("codes.txt");
+    auto start = high_resolution_clock::now();
+    while (getline(file1, line)) {
+        v.push_back(line);
+    }
+    auto end = high_resolution_clock::now();
+    read_v = duration_cast<nanoseconds>(end - start).count();
+    file1.close();
+
+    ifstream file2("codes.txt");
+    start = high_resolution_clock::now();
+    while (getline(file2, line)) {
+        l.push_back(line);
+    }
 
 
     return 0;
