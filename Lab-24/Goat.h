@@ -36,6 +36,12 @@ public:
         age = a;
         color = c;
     }
+
+    bool operator<(const Goat& o) const {
+    if (name != o.name) return name < o.name;
+    if (age != o.age) return age < o.age;
+    return color < o.color;
+    }
 void setName(string n) { name = n; }
     string getName() const { return name; }
 

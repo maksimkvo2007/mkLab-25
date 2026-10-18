@@ -5,6 +5,7 @@
 #include <ctime>
 using namespace std;
 #include "Goat.h"
+#include <set>
 
 const int MAX_AGE = 20;
 
@@ -22,20 +23,20 @@ int main_menu() {
     return ch;
 }
 
-void display_trip(const list<Goat>& trip) {
+void display_trip(const set<Goat>& trip) {
     if (trip.empty()) {
         cout << "Trip is empty.\n";
         return;
     }
     int idx = 1;
-    for (list<Goat>::const_iterator it = trip.begin(); it != trip.end(); ++it) {
+    for (set<Goat>::const_iterator it = trip.begin(); it != trip.end(); ++it) {
         cout << "[" << idx++ << "] ";
         it->print();
         cout << endl;
     }
 }
 
-void add_goat(list<Goat>& trip, string names[], int ns, string colors[], int cs) {
+void add_goat(set<Goat>& trip, string names[], int ns, string colors[], int cs) {
     string n = names[rand() % ns];
     string c = colors[rand() % cs];
     int a = rand() % (MAX_AGE + 1);
