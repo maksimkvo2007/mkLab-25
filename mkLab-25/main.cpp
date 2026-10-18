@@ -101,11 +101,30 @@ int main() {
     end = high_resolution_clock::now();
     delete_s = duration_cast<nanoseconds>(end - start).count();
 
-    cout << "Operation\tVector\t\tList\t\tSet\n";
-    cout << "Read\t\t" << read_v << "\t" << read_l << "\t" << read_s << "\n";
-    cout << "Sort\t\t" << sort_v << "\t" << sort_l << "\t" << sort_s << "\n";
-    cout << "Insert\t\t" << insert_v << "\t" << insert_l << "\t" << insert_s << "\n";
-    cout << "Delete\t\t" << delete_v << "\t" << delete_l << "\t" << delete_s << "\n";
+    cout << left << setw(12) << "Operation"
+         << right << setw(14) << "Vector"
+         << setw(14) << "List"
+         << setw(14) << "Set" << endl;
+
+    cout << left << setw(12) << "Read"
+         << right << setw(14) << read_v
+         << setw(14) << read_l
+         << setw(14) << read_s << endl;
+
+    cout << left << setw(12) << "Sort"
+         << right << setw(14) << sort_v
+         << setw(14) << sort_l
+         << setw(14) << sort_s << endl;
+
+    cout << left << setw(12) << "Insert"
+         << right << setw(14) << insert_v
+         << setw(14) << insert_l
+         << setw(14) << insert_s << endl;
+
+    cout << left << setw(12) << "Delete"
+         << right << setw(14) << delete_v
+         << setw(14) << delete_l
+         << setw(14) << delete_s << endl;
 
     return 0;
 }
