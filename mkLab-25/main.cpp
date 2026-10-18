@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <chrono>
 using namespace std;
 #include <string>
@@ -8,6 +9,7 @@ using namespace std;
 #include <chrono>
 #include <algorithm>
 #include <iomanip>
+using namespace std::chrono;
 
 int main() {
     vector<string> v;
@@ -20,17 +22,19 @@ int main() {
     long long delete_v = 0, delete_l = 0, delete_s = 0;
 
     string line;
+    high_resolution_clock::time_point start, end;
+
     //Race 1
-    ifstream file1("codes.txt");
-    auto start = high_resolution_clock::now();
+    ifstream file1("mkLab-25/codes.txt");
+    start = high_resolution_clock::now();
     while (getline(file1, line)) {
         v.push_back(line);
     }
-    auto end = high_resolution_clock::now();
+    end = high_resolution_clock::now();
     read_v = duration_cast<nanoseconds>(end - start).count();
     file1.close();
 
-    ifstream file2("codes.txt");
+    ifstream file2("mkLab-25/codes.txt");
     start = high_resolution_clock::now();
     while (getline(file2, line)) {
         l.push_back(line);
@@ -39,7 +43,7 @@ int main() {
     read_l = duration_cast<nanoseconds>(end - start).count();
     file2.close();
 
-    ifstream file3("codes.txt");
+    ifstream file3("mkLab-25/codes.txt");
     start = high_resolution_clock::now();
     while (getline(file3, line)) {
         s.insert(line);
@@ -65,7 +69,7 @@ int main() {
     end = high_resolution_clock::now();
     insert_v = duration_cast<nanoseconds>(end - start).count();
 
-    auto lit = l.begin();
+    list<string>::iterator lit = l.begin();
     advance(lit, l.size() / 2);
     start = high_resolution_clock::now();
     l.insert(lit, "TESTCODE");
@@ -90,7 +94,7 @@ int main() {
     end = high_resolution_clock::now();
     delete_l = duration_cast<nanoseconds>(end - start).count();
 
-    auto sit = s.begin();
+    set<string>::iterator sit = s.begin();
     advance(sit, s.size() / 2);
     start = high_resolution_clock::now();
     s.erase(sit);
@@ -106,9 +110,3 @@ int main() {
     return 0;
 }
 
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
