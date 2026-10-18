@@ -42,13 +42,13 @@ void add_goat(set<Goat>& trip, string names[], int ns, string colors[], int cs) 
     int a = rand() % (MAX_AGE + 1);
 
     Goat g(n, a, c);
-    trip.push_back(g);
+    trip.insert(g);
     cout << "Added: ";
     g.print();
     cout << endl;
 }
 
-void delete_goat(list<Goat>& trip) {
+void delete_goat(set<Goat>& trip) {
     if (trip.empty()) {
         cout << "No goats to delete.\n";
         return;
@@ -66,7 +66,7 @@ void delete_goat(list<Goat>& trip) {
         return;
     }
 
-    list<Goat>::iterator it = trip.begin();
+    set<Goat>::iterator it = trip.begin();
     for (int i = 1; i < pick; ++i) {
         ++it;
     }
@@ -85,7 +85,7 @@ int main() {
     int name_sz = 8;
     int color_sz = 8;
 
-    list<Goat> trip;
+    set<Goat> trip;
     int choice = 0;
 
     while (choice != 4) {
