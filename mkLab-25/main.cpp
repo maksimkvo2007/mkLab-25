@@ -77,6 +77,26 @@ int main() {
     end = high_resolution_clock::now();
     insert_s = duration_cast<nanoseconds>(end - start).count();
 
+    //Race 4
+    start = high_resolution_clock::now();
+    v.erase(v.begin() + (v.size() / 2));
+    end = high_resolution_clock::now();
+    delete_v = duration_cast<nanoseconds>(end - start).count();
+
+    lit = l.begin();
+    advance(lit, l.size() / 2);
+    start = high_resolution_clock::now();
+    l.erase(lit);
+    end = high_resolution_clock::now();
+    delete_l = duration_cast<nanoseconds>(end - start).count();
+
+    auto sit = s.begin();
+    advance(sit, s.size() / 2);
+    start = high_resolution_clock::now();
+    s.erase(sit);
+    end = high_resolution_clock::now();
+    delete_s = duration_cast<nanoseconds>(end - start).count();
+
     return 0;
 }
 
