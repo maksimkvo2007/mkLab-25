@@ -11,30 +11,31 @@ using namespace std;
 #include <iomanip>
 using namespace std::chrono;
 
+const int SIMULATIONS = 15;
+
 int main() {
     vector<string> v;
     list<string> l;
     set<string> s;
 
-    long long read_v = 0, read_l = 0, read_s = 0;
-    long long sort_v = 0, sort_l = 0, sort_s = -1; // set is already sorted
-    long long insert_v = 0, insert_l = 0, insert_s = 0;
-    long long delete_v = 0, delete_l = 0, delete_s = 0;
-
+    long long results[2][4][3] = {{{0}}};
+    
     string line;
     high_resolution_clock::time_point start, end;
+    for (int sim = 0; sim < SIMULATIONS; sim++) {
+    v.clear(); l.clear(); s.clear();
 
     //Race 1
-    ifstream file1("codes.txt");
+    ifstream file1("names.txt");
     start = high_resolution_clock::now();
     while (getline(file1, line)) {
         v.push_back(line);
     }
     end = high_resolution_clock::now();
-    read_v = duration_cast<nanoseconds>(end - start).count();
+    results[0][0][0] = duration_cast<nanoseconds>(end - start).count();
     file1.close();
 
-    ifstream file2("codes.txt");
+    ifstream file2("names.txt");
     start = high_resolution_clock::now();
     while (getline(file2, line)) {
         l.push_back(line);
@@ -43,7 +44,7 @@ int main() {
     read_l = duration_cast<nanoseconds>(end - start).count();
     file2.close();
 
-    ifstream file3("codes.txt");
+    ifstream file3("names.txt");
     start = high_resolution_clock::now();
     while (getline(file3, line)) {
         s.insert(line);
