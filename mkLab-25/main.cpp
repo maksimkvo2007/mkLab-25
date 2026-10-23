@@ -25,7 +25,7 @@ int main() {
     high_resolution_clock::time_point start, end;
 
     //Race 1
-    ifstream file1("mkLab-25/codes.txt");
+    ifstream file1("codes.txt");
     start = high_resolution_clock::now();
     while (getline(file1, line)) {
         v.push_back(line);
@@ -34,7 +34,7 @@ int main() {
     read_v = duration_cast<nanoseconds>(end - start).count();
     file1.close();
 
-    ifstream file2("mkLab-25/codes.txt");
+    ifstream file2("codes.txt");
     start = high_resolution_clock::now();
     while (getline(file2, line)) {
         l.push_back(line);
@@ -43,7 +43,7 @@ int main() {
     read_l = duration_cast<nanoseconds>(end - start).count();
     file2.close();
 
-    ifstream file3("mkLab-25/codes.txt");
+    ifstream file3("codes.txt");
     start = high_resolution_clock::now();
     while (getline(file3, line)) {
         s.insert(line);
