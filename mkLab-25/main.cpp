@@ -111,31 +111,19 @@ int main() {
 } // Closes the loop from earlier
 
     
-    cout << left << setw(12) << "Operation"
-         << right << setw(14) << "Vector"
-         << setw(14) << "List"
-         << setw(14) << "Set" << endl;
+cout << "Number of simulations: " << SIMULATIONS << endl;
+cout << left << setw(12) << "Operation"
+     << right << setw(14) << "Vector"
+     << setw(14) << "List"
+     << setw(14) << "Set" << endl;
 
-    cout << left << setw(12) << "Read"
-         << right << setw(14) << read_v
-         << setw(14) << read_l
-         << setw(14) << read_s << endl;
+string operations[4] = {"Read", "Sort", "Insert", "Delete"};
 
-    cout << left << setw(12) << "Sort"
-         << right << setw(14) << sort_v
-         << setw(14) << sort_l
-         << setw(14) << sort_s << endl;
-
-    cout << left << setw(12) << "Insert"
-         << right << setw(14) << insert_v
-         << setw(14) << insert_l
-         << setw(14) << insert_s << endl;
-
-    cout << left << setw(12) << "Delete"
-         << right << setw(14) << delete_v
-         << setw(14) << delete_l
-         << setw(14) << delete_s << endl;
-
-    return 0;
+for (int i = 0; i < 4; i++) {
+    cout << left << setw(12) << operations[i]
+         << right << setw(14) << results[1][i][0] / SIMULATIONS
+         << setw(14) << results[1][i][1] / SIMULATIONS
+         << setw(14) << results[1][i][2] / SIMULATIONS << endl;
+}
 }
 
